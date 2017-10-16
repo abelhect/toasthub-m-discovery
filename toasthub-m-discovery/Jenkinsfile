@@ -1,0 +1,18 @@
+node {
+    stage 'build cloud discovery'
+    git credentialsId: '2c3877ec-07ca-437f-b133-dbbf0a44a6bd', url: 'ssh://jenkinsgit@cborghome.ddns.net/opt/gitcborg/toasthub-m-discovery.git'
+    
+    def core_path = "toasthub-m-discovery"
+    dir(core_path) {
+        sh 'mvn clean install'
+    }
+    
+   
+    stage 'move to staging area'
+    def workspace = pwd()
+    echo "work space ${workspace}"
+    sh "cp ${workspace}/toasthub-m-discovery/target/toasthub-m-discovery-1.0-SNAPSHOT.jar /opt/software"
+    
+    
+    
+}
