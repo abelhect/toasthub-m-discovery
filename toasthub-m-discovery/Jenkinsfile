@@ -7,12 +7,9 @@ node {
         sh 'mvn clean install'
     }
     
-   
-    stage 'move to staging area'
+    stage 'move to deploy area'
     def workspace = pwd()
     echo "work space ${workspace}"
     sh "cp ${workspace}/toasthub-m-discovery/target/toasthub-m-discovery-1.0-SNAPSHOT.jar /opt/software"
-    
-    
-    
+
 }
